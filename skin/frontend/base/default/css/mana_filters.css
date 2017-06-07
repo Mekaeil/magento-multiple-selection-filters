@@ -10,3 +10,116 @@
 .block-layered-nav .currently li { position: relative; padding: 6px 24px 6px 10px; }
 .block-layered-nav .currently .btn-remove { margin-top: 0; position: absolute; right: 4px; top: 9px; margin-left: 0; }
 .block-layered-nav dt { position: relative; zoom: 1; left: 0; top: 0; }
+
+/*******
+Edit By Mekaeil
+*****/
+@font-face {
+  font-family: 'BeautyIcon';
+  src:  url('../fonts/icon/BeautyIcon.eot?me35qa');
+  src:  url('../fonts/icon/BeautyIcon.eot?me35qa#iefix') format('embedded-opentype'),
+    url('../fonts/icon/BeautyIcon.ttf?me35qa') format('truetype'),
+    url('../fonts/icon/BeautyIcon.woff?me35qa') format('woff'),
+    url('../fonts/icon/BeautyIcon.svg?me35qa#BeautyIcon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'BeautyIcon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-plus2:before {
+  content: "\e114";
+}
+.icon-minus2:before {
+  content: "\e115";
+}
+.icon-check2:before {
+  content: "\e116";
+}
+.icon-cross2:before {
+  content: "\e117";
+}
+.icon-ellipsis:before {
+  content: "\e129";
+}
+/*=====================================================================================*\
+|||||||||||||||||||||||||||||        CHECKBOX      |||||||||||||||||||||||||||||||||||
+\*=====================================================================================*/
+.custom.checkbox li {
+  display: block;
+}
+.custom.checkbox li input[type=checkbox] {
+  position: absolute;
+  visibility: hidden;
+}
+.custom.checkbox li label {
+  position: relative;
+}
+.custom.checkbox li label::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  vertical-align: middle;
+  margin-left: 10px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+.custom.checkbox li input[type=checkbox]:checked + label::after {
+  font-family: "BeautyIcon";
+  content: "\e116";
+  position: absolute;
+  font-size: 1rem;
+  right: 1px;
+  top: -7px;
+  width: 0;
+  height: 0;
+  color: #bf9861;
+  background: transparent;
+}
+.custom.checkbox li span.selected {
+  position: relative;
+  padding-right: 1.5rem;
+  display: block;
+  line-height: 2.5;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.05);
+  background: rgba(191, 152, 97, 0.08);
+}
+.custom.checkbox li span.selected::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  vertical-align: middle;
+  margin-left: 10px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+.custom.checkbox li span.selected::after {
+  font-family: "BeautyIcon";
+  content: "\e116";
+  position: absolute;
+  font-size: 1rem;
+  right: 1.55em;
+  top: -0.2em;
+  width: 0;
+  height: 0;
+  color: #bf9861;
+  background: transparent;
+}

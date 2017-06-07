@@ -15,23 +15,53 @@
 /* @var $this Mana_Filters_Block_Filter_Attribute */
 ?>
 <?php echo Mage::helper('mana_core')->getNamedHtml('mana_filters/markup', 'before_items', array('block' => $this)) ?>
-<ol class="m-filter-item-list <?php echo $this->getFilterOptions()->getIsReverse() ? 'm-reverse' : '' ?>">
+<ul class=" custom checkbox <?php echo $this->getFilterOptions()->getIsReverse() ? '' : '' ?>">
 <?php foreach ($this->getItems() as $_item): ?>
     <li <?php if ($_item->getMShowSelected()): ?>class="m-selected-ln-item"<?php endif; ?>>
         <?php // MANA BEGIN ?>
         <?php if ($_item->getMSelected()): ?>
-        	<span class="m-selected-filter-item"><?php echo $this->escapeHtml($_item->getLabel()) ?></span>
+        	<span class="m-selected-filter-item selected ">
+                <?php echo $this->escapeHtml($_item->getLabel()) ?>    
+            </span>
         <?php else : ?>
 	        <?php if (!$this->getFilterOptions()->getDisableNoResultOptions() || $_item->getCount() > 0 || $_item->getMSelected()): ?>
-	        <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>" title="<?php echo $this->escapeHtml($_item->getLabel()) ?>"><?php echo $this->escapeHtml($_item->getLabel()) ?></a>
+	   
+<?php /*
+
+     <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>" title="<?php echo $this->escapeHtml($_item->getLabel()) ?>"><?php echo $this->escapeHtml($_item->getLabel()) ?></a>
+*/ ?>
+
+            <?php
+                /*
+                * get Query in URL and set Name inputs 
+                * and set value for Label's "FOR" , input's id
+                * 
+                */
+                $path     = (string)$this->urlEscape($_item->getUrl()) ;
+
+                $baseUrl  = (string)$_SERVER['SERVER_NAME'];
+                $getindex = stripos( $path , $baseUrl) + strlen($baseUrl) ;
+                $getQuery = substr($path,$getindex);
+                    
+            ?>
+
+            <input type="checkbox" onclick="window.location.href='<?php echo $this->urlEscape($_item->getUrl()) ?>';" id="<?php echo $getQuery; ?>" name="<?php echo $getQuery; ?>" >           
+            <label for="<?php echo $getQuery; ?>">
+                <?php echo $_item->getLabel(); ?>
+
+            </label>
+
+
+
+
 	        <?php else: echo $this->escapeHtml($_item->getLabel()) ?>
 	        <?php endif; ?>
         <?php endif; ?>
         <?php // MANA END ?>
-        <?php if (Mage::getStoreConfigFlag('mana_filters/display/count')) : ?>
+        <?php /* if (Mage::getStoreConfigFlag('mana_filters/display/count')) : ?>
             (<?php echo $_item->getCount() ?>)
-        <?php endif; ?>
+        <?php endif; */ ?>
     </li>
 <?php endforeach ?>
-</ol>
+</ul>
 <?php echo Mage::helper('mana_core')->getNamedHtml('mana_filters/markup', 'after_items', array('block' => $this)) ?>
